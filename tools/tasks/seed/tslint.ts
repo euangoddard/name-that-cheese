@@ -16,8 +16,8 @@ export = () => {
     .pipe(plugins.tslint({
       rulesDirectory: NG2LINT_RULES
     }))
-    .pipe(plugins.tslint.report(plugins.tslintStylish, {
-      emitError: true,
+    .pipe(plugins.tslint.report(require('tslint-stylish'), {
+      emitError: require('is-ci'),
       sort: true,
       bell: true
     }));
