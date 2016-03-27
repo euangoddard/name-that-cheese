@@ -1,20 +1,21 @@
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
-import {NavbarComponent} from './navbar.component';
-import {ToolbarComponent} from './toolbar.component';
-import {HomeComponent} from '../../home/components/home.component';
-import {AboutComponent} from '../../about/components/about.component';
-import {NameListService} from '../../shared/services/name-list.service';
+import {GameService} from '../services/game.service';
+import {WelcomeComponent} from './welcome.component';
+import {CheeseComponent} from './cheese.component';
+import {EndComponent} from './end.component';
+import {CheeseService} from '../services/cheese.service';
 
 @Component({
-  selector: 'sd-app',
-  viewProviders: [NameListService],
+  selector: 'cheese-app',
+  viewProviders: [GameService, CheeseService],
   moduleId: module.id,
   templateUrl: './app.component.html',
-  directives: [ROUTER_DIRECTIVES, NavbarComponent, ToolbarComponent]
+  directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-  { path: '/',      name: 'Home',  component: HomeComponent  },
-  { path: '/about', name: 'About', component: AboutComponent }
+  { path: '/', name: 'Welcome', component: WelcomeComponent, useAsDefault: true },
+  { path: '/cheeses/:id', name: 'Cheese', component: CheeseComponent },
+  { path: '/end', name: 'End', component: EndComponent }
 ])
 export class AppComponent {}

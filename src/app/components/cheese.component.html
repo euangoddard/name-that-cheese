@@ -1,0 +1,25 @@
+<h2>Question number {{ stage }}</h2>
+<aside>Score: {{ score }}</aside>
+<p>Which cheese is this?</p>
+<img src="{{ cheese_question.image_url }}">
+<p>
+    <button
+        type="button"
+        *ngFor="#name of cheese_question.options"
+        (click)="makeGuess(name)"
+        [disabled]="hasGuessed"
+    >
+        {{ name }}
+    </button>
+</p>
+<p *ngIf="hasGuessed">
+    <span *ngIf="isGuessCorrect">
+        You guessed correctly that it was {{ correctAnswer }}.
+    </span>
+    <span *ngIf="!isGuessCorrect">
+        Sorry. That's the wrong answer. This cheese is {{ correctAnswer }}.
+    </span>
+</p>
+<p *ngIf="hasGuessed">
+    <button type="button" (click)="moveOnward()">Next</button>
+</p>
