@@ -20,7 +20,7 @@ export class CheeseService {
         },
         {
             name: 'Ricotta',
-            incorrect_names: ['Goat\s cheese', 'Gorgonzola', 'Cheddar'],
+            incorrect_names: ['Goat\'s cheese', 'Gorgonzola', 'Cheddar'],
             image_url: '/assets/images/2.jpg'
         },
         {
@@ -30,7 +30,7 @@ export class CheeseService {
         },
         {
             name: 'Feta',
-            incorrect_names: ['Goat\s cheese', 'Ricotta', 'Brie'],
+            incorrect_names: ['Goat\'s cheese', 'Ricotta', 'Brie'],
             image_url: '/assets/images/4.jpg'
         },
         {
@@ -59,7 +59,7 @@ export class CheeseService {
             image_url: '/assets/images/9.jpg'
         },
         {
-            name: 'Goat\s cheese',
+            name: 'Goat\'s cheese',
             incorrect_names: ['Feta', 'Mozzarella', 'Gorgonzola'],
             image_url: '/assets/images/10.jpg'
         }

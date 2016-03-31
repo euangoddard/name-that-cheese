@@ -52,6 +52,12 @@ gulp.task('build.prod', (done: any) =>
               done));
 
 // --------------
+// Deploy prod.
+gulp.task('deploy', (done: any) =>
+  runSequence('build.prod', 'deploy.prod', done)
+);
+
+// --------------
 // Build test.
 gulp.task('build.test', (done: any) =>
   runSequence('clean.dev',

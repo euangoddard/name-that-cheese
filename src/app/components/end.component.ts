@@ -11,15 +11,19 @@ import {GameService} from '../services/game.service';
   directives: [CORE_DIRECTIVES]
 })
 export class EndComponent implements OnInit {
+  score: number;
+
   constructor(private _router: Router, private _game: GameService) {}
 
   ngOnInit(): void {
       if (!this._game.is_over()) {
-          if (this._game.is_in_progress()) {
-              this._router.navigate(['Cheese', {id: this._game.stage}]);
-          } else {
-              this._router.navigate(['Welcome']);
-          }
+        if (this._game.is_in_progress()) {
+          this._router.navigate(['Cheese', {id: this._game.stage}]);
+        } else {
+          this._router.navigate(['Welcome']);
+        }
+      } else {
+        this.score = this._game.score;
       }
   }
 

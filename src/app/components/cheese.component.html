@@ -1,10 +1,10 @@
-<h2>Question number {{ stage }}</h2>
-<aside>Score: {{ score }}</aside>
-<p>Which cheese is this?</p>
-<img src="{{ cheese_question.image_url }}">
-<p>
+<h2>Question {{ stage }}</h2>
+<aside class="score">Score: {{ score }}</aside>
+<h4>Which cheese is this?</h4>
+<p class="cheese-options">
     <button
         type="button"
+        class="btn btn-secondary"
         *ngFor="#name of cheese_question.options"
         (click)="makeGuess(name)"
         [disabled]="hasGuessed"
@@ -12,14 +12,19 @@
         {{ name }}
     </button>
 </p>
-<p *ngIf="hasGuessed">
-    <span *ngIf="isGuessCorrect">
-        You guessed correctly that it was {{ correctAnswer }}.
-    </span>
-    <span *ngIf="!isGuessCorrect">
-        Sorry. That's the wrong answer. This cheese is {{ correctAnswer }}.
-    </span>
-</p>
-<p *ngIf="hasGuessed">
-    <button type="button" (click)="moveOnward()">Next</button>
-</p>
+<figure class="figure-cheese">
+    <img src="{{ cheese_question.image_url }}" class="image-cheese" [ngClass]="{guessed: hasGuessed}">
+    <div class="answers" *ngIf="hasGuessed">
+        <p>
+            <span *ngIf="isGuessCorrect">
+                You guessed correctly that it was {{ correctAnswer }}.
+            </span>
+            <span *ngIf="!isGuessCorrect">
+                Sorry. That's the wrong answer. This cheese is {{ correctAnswer }}.
+            </span>
+        </p>
+        <div>
+            <button type="button" class="btn btn-primary" (click)="moveOnward()">Next</button>
+        </div>
+    </div>
+</figure>
