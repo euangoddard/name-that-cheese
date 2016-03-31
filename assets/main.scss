@@ -1,0 +1,98 @@
+@import "scss/variables";
+
+@import "scss/normalize";
+@import "scss/reboot";
+
+@import "scss/buttons";
+@import "scss/type";
+
+@import "scss/mixins/breakpoints";
+
+cheese-app {
+  display: block;
+  width: 100%;
+  max-width: map-get($container-max-widths, "lg");
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.display-2 {
+  border-bottom: 1px solid $body-color;
+  @include media-breakpoint-down(md) {
+    font-size: 3rem;
+  }
+}
+
+.figure-cheese {
+  max-width: 75%;
+  display: block;
+  margin: 1rem auto;
+  position: relative;
+
+  @include media-breakpoint-down(sm) {
+    max-width: 100%;
+  }
+
+  .answers {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: $brand-primary;
+    font-weight: normal;
+    padding-top: 2rem;
+  }
+
+  p {
+    font-size: 2rem;
+    padding: 0.5rem;
+    text-shadow: 0 0 8px rgba(black, 0.2);
+    background-color: rgba(#fff, 0.8);
+
+    @include media-breakpoint-down(xs) {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+
+.image-cheese {
+  width: 100%;
+  height: auto;
+  transition: filter 1s ease;
+
+  &.guessed {
+    filter: grayscale(1);
+  }
+}
+
+cheese-question {
+  display: block;
+  position: relative;
+
+  .score {
+    font-weight: 500;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.cheese-options {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media-breakpoint-down(sm) {
+    max-width: 100%;
+  }
+
+  .btn {
+    margin-bottom: 0.25rem;
+  }
+}
